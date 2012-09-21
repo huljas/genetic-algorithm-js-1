@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Genetic Algorithm with JS - Part 1</title>
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.min.css" type="text/css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+	<script src="genetic/utils.js"></script>
+	<script src="genetic/gene.js"></script>
+	<script src="genetic/population.js"></script>
+	<script src="ui.js"></script>
+</head>
+<body>
+<div class="container">    
+<h1>Genetic algorithm</h1>
+
+<div id="alerts"></div>
+
+<form class="form-horizontal">
+	<div class="control-group">
+		<label class="control-label" for="goal">Phrase </label>
+		<div class="controls">
+			<input id="goal" type="text" name="goal" value="Hello World!"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label" for="size">Population size </label>
+		<div class="controls">
+			<input id="size" type="text" name="size" value="10"/>
+		</div>
+	</div>
+	<div class="control-group">
+		<div class="controls">	
+			<input id="start" type="submit" class="btn btn-large btn-primary" value="Let's Go!"/>
+		</div>
+	</div>
+</form>
+
+<table class="table">
+<thead>
+<tr><th>Round</th><th>Result</th><th>Cost</th></tr>
+</thead>
+<tbody>
+</tbody>    
+</table>
+
+</div>    
+</body>
+​
+</html>
