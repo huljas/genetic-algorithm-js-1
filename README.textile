@@ -103,7 +103,6 @@ console.log("Result: " + result.generation + " '" + result.value + "' " + result
 var result2 = population.generation();
 console.log("Result: " + result2.generation + " '" + result2.value + "' " + result2.cost);
 
-
 bc. Result: 1 '1j/Ä,Kwr23Rt' 57474
 Result: 2 '2j/Ä,xx^SaMt' 53838
 
