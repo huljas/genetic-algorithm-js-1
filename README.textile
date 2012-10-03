@@ -38,6 +38,9 @@ kitty.callMe();
 
 h2. Exercise
 
+"javascript String object":http://www.w3schools.com/jsref/jsref_obj_string.asp
+"javascript Math object":http://www.w3schools.com/jsref/jsref_obj_math.asp
+
 h2. Part 1
 
 Implement following utility functions in file genetic/utils.js
@@ -56,9 +59,6 @@ console.log(genetic.Utils.distance("1230", "1235"));
 
 bc. 1
 25
-
-"javascript String object"|http://www.w3schools.com/jsref/jsref_obj_string.asp
-"javascript Math object"|http://www.w3schools.com/jsref/jsref_obj_math.asp
 
 h2. Part 2
 
