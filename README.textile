@@ -97,7 +97,6 @@ correct string starting with a pool of randomly generated strings. The populatio
 * Mating certain number of strongest members to fill the pool
 * Mutating members in random
 
-
 bc. var population = new genetic.Population("Hello world!", 10);
 var result = population.generation();
 console.log("Result: " + result.generation + " '" + result.value + "' " + result.cost);
