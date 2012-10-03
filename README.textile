@@ -2,43 +2,37 @@ h1. Genetic algorithms with javascript - Part 1
 
 h2. Some Javascript basic patterns
 
-h3. http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript|"Constructor"
+h3. "Constructor":http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript
 
-Basic
+h4. Basic
 
 bc. function Cat(name) {
   this.name = name;
-
   this.callMe = function() {
     alert("Here " + this.name + "!");
   };
 }
-
 var kitty = new Cat("kitty");
 kitty.callMe();
 
-
-With prototype
+h4. With prototype
 
 bc. function Cat(name) {
     this.name = name;
 };
-
 Cat.prototype = {
     callMe : function() {
         alert("Here " + this.name + "!");
     }
 };
 
+h3. "Namespacing":http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailnamespacing
 
-h3. "Namespacing"|http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailnamespacing
-
-Object literal notation
+h4. Object literal notation
 
 bc. var animals = animals || {};
 animals.Cat = function(name) { ... };
 animals.Cat.prototype = { ... };
-
 var kitty = new animals.Cat("kitty");
 kitty.callMe();
 
@@ -48,18 +42,17 @@ h2. Part 1
 
 Implement following utility functions in file genetic/utils.js
 
-bc. // genetic.Utils.randomString(length) - generates random string of given length
-var s = genetic.Utils.randomString(10);
-console.log("s:'" + s + "', s.length:" + s.length);
+genetic.Utils.randomString(length) - generates random string of given length
 
+bc. var s = genetic.Utils.randomString(10);
+console.log("s:'" + s + "', s.length:" + s.length);
 
 bc. s:'g(ay+9a;3', s.length:10
 
+genetic.Utils.distance(str1, str2) - squared euclidean distance of two same length strings
 
-bc. // genetic.Utils.distance(str1, str2) - squared euclidean distance of two same length strings
-console.log(genetic.Utils.distance("1234", "1235"));
+bc. console.log(genetic.Utils.distance("1234", "1235"));
 console.log(genetic.Utils.distance("1230", "1235"));
-
 
 bc. 1
 25
@@ -73,16 +66,26 @@ Implement Gene object in genetic/gene.js
 
 bc. var alpha = new genetic.Gene("alpha");
 var betaa = new genetic.Gene("betaa");
-console.log("cost: " + alpha.cost("alphc"));
-alpha.mutate();
-console.log("mutate: " + alpha.value);
-var nextGen = alpha.mate(betaa);
-console.log("nextGen: '" + nextGen[0].value + "' , '" + nextGen[1].value);
 
+cost - calculates the cost of this gene from given value
+
+bc. console.log("cost: " + alpha.cost("alphc"));
 
 bc. cost: 4
-mutate: aloha
-nextGen: 'altaa' , 'beoha
+
+mutate - randomly modifies a single character in this genes value
+
+bc. alpha.mutate();
+console.log("mutate: " + alpha.value);
+
+bc. mutate: aloha
+
+mate - combine gene with given gene to produce two new genes
+
+bc. var nextGen = alpha.mate(betaa);
+console.log("nextGen: '" + nextGen[0].value + "' , '" + nextGen[1].value);
+
+bc. nextGen: 'altaa' , 'beoha
 
 h2. Part 3
 
@@ -95,8 +98,7 @@ correct string starting with a pool of randomly generated strings. The populatio
 * Mutating members in random
 
 
-bc.
-var population = new genetic.Population("Hello world!", 10);
+bc. var population = new genetic.Population("Hello world!", 10);
 var result = population.generation();
 console.log("Result: " + result.generation + " '" + result.value + "' " + result.cost);
 var result2 = population.generation();
