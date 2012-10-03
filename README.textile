@@ -1,0 +1,113 @@
+h1. Genetic algorithms with javascript - Part 1
+
+h2. Some Javascript basic patterns
+
+h3. "Constructor"|http://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript
+
+Basic
+
+bc. function Cat(name) {
+  this.name = name;
+
+  this.callMe = function() {
+    alert("Here " + this.name + "!");
+  };
+}
+
+var kitty = new Cat("kitty");
+kitty.callMe();
+
+
+With prototype
+
+bc. function Cat(name) {
+    this.name = name;
+};
+
+Cat.prototype = {
+    callMe : function() {
+        alert("Here " + this.name + "!");
+    }
+};
+
+
+h3. "Namespacing"|http://addyosmani.com/resources/essentialjsdesignpatterns/book/#detailnamespacing
+
+Object literal notation
+
+bc. var animals = animals || {};
+animals.Cat = function(name) { ... };
+animals.Cat.prototype = { ... };
+
+var kitty = new animals.Cat("kitty");
+kitty.callMe();
+
+h2. Exercise
+
+h2. Part 1
+
+Implement following utility functions in file genetic/utils.js
+
+bc. // genetic.Utils.randomString(length) - generates random string of given length
+var s = genetic.Utils.randomString(10);
+console.log("s:'" + s + "', s.length:" + s.length);
+
+
+bc. s:'g(ay+9a;3', s.length:10
+
+
+bc. // genetic.Utils.distance(str1, str2) - squared euclidean distance of two same length strings
+console.log(genetic.Utils.distance("1234", "1235"));
+console.log(genetic.Utils.distance("1230", "1235"));
+
+
+bc. 1
+25
+
+"javascript String object"|http://www.w3schools.com/jsref/jsref_obj_string.asp
+"javascript Math object"|http://www.w3schools.com/jsref/jsref_obj_math.asp
+
+h2. Part 2
+
+Implement Gene object in genetic/gene.js
+
+bc. var alpha = new genetic.Gene("alpha");
+var betaa = new genetic.Gene("betaa");
+console.log("cost: " + alpha.cost("alphc"));
+alpha.mutate();
+console.log("mutate: " + alpha.value);
+var nextGen = alpha.mate(betaa);
+console.log("nextGen: '" + nextGen[0].value + "' , '" + nextGen[1].value);
+
+
+bc. cost: 4
+mutate: aloha
+nextGen: 'altaa' , 'beoha
+
+h2. Part 3
+
+Implement the genetic algorithm in the Population object in genetic/populations.js. The algorithm tries to find the
+correct string starting with a pool of randomly generated strings. The population experiences generations which consists of:
+
+* Sorting the genes by cost score
+* Killing certain number of weakest members
+* Mating certain number of strongest members to fill the pool
+* Mutating members in random
+
+
+bc.
+var population = new genetic.Population("Hello world!", 10);
+var result = population.generation();
+console.log("Result: " + result.generation + " '" + result.value + "' " + result.cost);
+var result2 = population.generation();
+console.log("Result: " + result2.generation + " '" + result2.value + "' " + result2.cost);
+
+
+bc. Result: 1 '1j/Ä,Kwr23Rt' 57474
+Result: 2 '2j/Ä,xx^SaMt' 53838
+
+h2. References
+
+http://burakkanber.com/blog/machine-learning-genetic-algorithms-part-1-javascript/
+http://addyosmani.com/resources/essentialjsdesignpatterns/book/
+http://jstherightway.com/
