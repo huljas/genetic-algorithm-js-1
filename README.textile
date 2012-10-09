@@ -89,13 +89,36 @@ bc. nextGen: 'altaa' , 'beoha
 
 h2. Part 3
 
-Implement the genetic algorithm in the Population object in genetic/populations.js. The algorithm tries to find the
-correct string starting with a pool of randomly generated strings. The population experiences generations which consists of:
+Implement Population object in genetic/population.js.
 
-* Sorting the genes by cost score
-* Killing certain number of weakest members
-* Mating certain number of strongest members to fill the pool
-* Mutating members in random
+Constructor takes the goal string and population size and generates a pool of randomly generated Genes
+
+bc. var population = new genetic.Population("Hello World!", 10);
+
+The sortGenes orders the genes in the pool based on their cost (distance from goal)
+
+bc. population.sortGenes();
+
+The tryMutate mutates each gene in the pool with 50% probability
+
+bc. population.tryMutate();
+
+The eliminateLastTwo removes the two poorest genes from the pool
+
+bc. population.eliminateLastTwo();
+
+The mateFirstTwo mates the two best genes and pushes their children at the end of the pool
+
+bc. population.mateFirstTwo();
+
+h2. Part 4
+
+Implement the genetic algorithm in Population objects generation function:
+
+* Mutate genes in the pool
+* Sort genes
+* Kill poorest
+* Mate best
 
 bc. var population = new genetic.Population("Hello world!", 10);
 var result = population.generation();
