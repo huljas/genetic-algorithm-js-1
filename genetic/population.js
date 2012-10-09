@@ -11,8 +11,6 @@ genetic.Population = function(goal, size) {
         var gene = new genetic.Gene(random);
         this.members.push(gene);
     }
-
-    this._round = function() {};
 };
 
 genetic.Population.prototype = {
