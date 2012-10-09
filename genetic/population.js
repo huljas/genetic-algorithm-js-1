@@ -14,17 +14,15 @@ genetic.Population = function(goal, size) {
 };
 
 genetic.Population.prototype = {
-    round: function(callback) {
-        this._round = callback;
-        return this;
+    tryMutate : function() {
+	    for (var i = 0; i < this.members.length; i++) {
+		    var gene = this.members[i];
+		    var random = Math.random();
+		    if (random < 0.5) {
+			    gene.mutate();
+		    }
+	    }
     },
-    
-    tryMutate : function(gene) {    
-        var random = Math.random();
-        if (random < 0.5) {
-            gene.mutate();
-        }            
-    },    
     
     sortGenes : function() {
         var goal = this.goal;
@@ -44,10 +42,7 @@ genetic.Population.prototype = {
     },
 
     generation : function() {
-        for (var i = 0; i < this.members.length; i++) {
-            var gene = this.members[i];
-            this.tryMutate(gene);
-        }
+        this.tryMutate();
         this.sortGenes();
         this.eliminateLastTwo();
         this.mateFirstTwo();
