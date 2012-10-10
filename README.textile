@@ -38,8 +38,19 @@ kitty.callMe();
 
 h2. Exercise
 
-"javascript String object":http://www.w3schools.com/jsref/jsref_obj_string.asp
-"javascript Math object":http://www.w3schools.com/jsref/jsref_obj_math.asp
+As a first step checkout this project from github
+
+bc. git clone https://github.com/huljas/genetic-algorithm-js-1
+
+Then open the tests page <code>tests/test.html</code> to run the tests, you should see lot of failures at this point. 
+
+Check also the ui in <code>index.html</code>, you will get to this once the tests pass.
+
+For js reference you can use for example w3schools:
+
+"String object":http://www.w3schools.com/jsref/jsref_obj_string.asp
+"Math object":http://www.w3schools.com/jsref/jsref_obj_math.asp
+"Array object":http://www.w3schools.com/jsref/jsref_obj_array.asp
 
 h2. Part 1
 
