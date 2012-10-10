@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/20130/KOT/trunk/frontend/tests/lib
+END
+mocha-yeti-adaptor.js
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/14932/KOT/trunk/frontend/tests/lib/mocha-yeti-adaptor.js
+END
+mocha.js
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/20130/KOT/trunk/frontend/tests/lib/mocha.js
+END
+require.js
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/20106/KOT/trunk/frontend/tests/lib/require.js
+END
+mocha.css
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/14932/KOT/trunk/frontend/tests/lib/mocha.css
+END
