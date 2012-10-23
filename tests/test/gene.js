@@ -9,7 +9,7 @@ describe('Gene', function() {
 
         it('should be an instance of Gene', function() {
             var alpha = new genetic.Gene("alpha");
-            expect(alpha).to.be.a(Gene);
+            expect(alpha).to.be.a(genetic.Gene);
         });
 
     });
@@ -23,7 +23,7 @@ describe('Gene', function() {
 
         it('should return a number', function() {
             var alpha = new genetic.Gene('alpha');
-            expect(alpha.cost()).to.be.a('number');
+            expect(alpha.cost(genetic.Utils.randomString(5))).to.be.a('number');
         });
 
     });
@@ -58,8 +58,9 @@ describe('Gene', function() {
         });
 
         it('should return an array', function() {
-            var alpha = new genetic.Gene('alpha');
-            expect(alpha.mate()).to.be.an('array');
+            var alpha = new genetic.Gene('alpha'),
+                beta = new genetic.Gene('betaa');
+            expect(alpha.mate(beta)).to.be.an('array');
         });
 
         it('should return an array of Genes', function() {
@@ -70,7 +71,7 @@ describe('Gene', function() {
             expect(generation.length).to.be(2);
 
             $.each(generation, function(idx, gene) {
-                expect(gene).to.be.a(Gene);
+                expect(gene).to.be.a(genetic.Gene);
             });
         });
 
