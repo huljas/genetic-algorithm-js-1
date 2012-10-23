@@ -2,20 +2,31 @@
 
  Implement following utility functions in file genetic/utils.js
 
- genetic.Utils.randomString(length) – generates random string of given length
+  genetic.Utils.randomString(length) : string – generates random string of given length
 
- var s = genetic.Utils.randomString(10);
- console.log("s:'" + s + "', s.length:" + s.length);
+  genetic.Utils.distance(str1, str2) : int – squared euclidean distance of two same length strings, that is:
 
- s:'g(ay+9a;3', s.length:10
-
-
- genetic.Utils.distance(str1, str2) – squared euclidean distance of two same length strings
-
- console.log(genetic.Utils.distance("1234", "1235"));
- console.log(genetic.Utils.distance("1230", "1235"));
-
- 1
- 25
+    D = (str1[0] - str2[0])^2 + ... + (str1[N] - str2[N])^2
 
 */
+var genetic = genetic || {};
+
+genetic.Utils = {
+	// Generates a random ASCII string with given length
+	randomString: function(length) {
+		var str = "";
+		for (var i = 0; i < length; i++) {
+			str += String.fromCharCode(Math.floor(Math.random() * 255));
+		}
+		return str;
+	},
+
+	distance: function(str1, str2) {
+		var ss = 0;
+		for (var i = 0; i < str1.length; i++) {
+			var d = str1.charCodeAt(i) - str2.charCodeAt(i);
+			ss += d * d;
+		}
+		return ss;
+	}
+};

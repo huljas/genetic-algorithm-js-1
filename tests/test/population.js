@@ -12,9 +12,9 @@ describe('Population', function() {
 			expect(population).to.be.a(genetic.Population);
 		});
 
-		it('should have a population amount of the value in arguments', function() {
-			var poolSize = 10,
-				population = new genetic.Population("Hello World!", 10);
+		it('should create a pool of given size', function() {
+			var poolSize = 10;
+			var	population = new genetic.Population("Hello World!", 10);
 			expect(population.pool.length).to.be(poolSize);
 		});
 
@@ -22,9 +22,23 @@ describe('Population', function() {
 
 	describe('#sortGenes', function() {
 
-		it('should be able to sort Genes', function() {
+		it('sortGenes should be defined', function() {
 			var population = new genetic.Population("Hello World!", 10);
 			expect(population.sortGenes).to.be.a('function');
+		});
+
+		it('should sort Genes by cost from goal', function() {
+			var population = new genetic.Population("alpha", 10);
+			population.pool = [];
+			population.pool.push(new genetic.Gene("gamha"));
+			population.pool.push(new genetic.Gene("delta"));
+			population.pool.push(new genetic.Gene("alfha"));
+
+			population.sortGenes();
+
+			expect(population.pool[0].value).to.be.equal("alfha");
+			expect(population.pool[1].value).to.be.equal("gamha");
+			expect(population.pool[2].value).to.be.equal("delta");
 		});
 
 	});
@@ -35,7 +49,6 @@ describe('Population', function() {
 			var population = new genetic.Population("Hello World!", 10);
 			expect(population.tryMutate).to.be.a('function');
 		});
-
 	});
 
 	describe('#eliminateLastTwo', function() {
@@ -46,11 +59,13 @@ describe('Population', function() {
 		});
 
 		it('should remove two last items from the pool', function() {
-			var population = new genetic.Population("Hello World!", 10),
-				lastTwo = population.pool.slice(8);
+			var population = new genetic.Population("Hello World!", 10);
+			var lastFirst = population.pool[9];
+			var lastSecond = population.pool[8];
 			population.eliminateLastTwo();
 			expect(population.pool.length).to.be(8);
-			expect(population.pool.slice(6)).not.to.be(lastTwo);
+			expect(population.pool).to.not.contain(lastFirst);
+			expect(population.pool).to.not.contain(lastSecond);
 		});
 
 	});
@@ -62,12 +77,21 @@ describe('Population', function() {
 			expect(population.mateFirstTwo).to.be.a('function');
 		});
 
-		it('should mate two first items from the pool', function() {
-			var population = new genetic.Population("Hello World!", 10),
-				firstTwo = population.pool.slice(0,2);
+		it('should add two new genes to the pool', function() {
+			var population = new genetic.Population("Hello World!", 10);
+			var first = population.pool[0];
+			var second = population.pool[1];
 			population.mateFirstTwo();
 			expect(population.pool.length).to.be(12);
-			expect(population.pool.slice(10)).not.to.be(firstTwo);
+		});
+
+		it('the two new genes should be children of their parents', function() {
+			var population = new genetic.Population("alpha", 10);
+			population.pool[0] = new genetic.Gene("delta");
+			population.pool[1] = new genetic.Gene("omega");
+			population.mateFirstTwo();
+			expect(population.pool[10].value).to.be.equal("deega");
+			expect(population.pool[11].value).to.be.equal("omlta");
 		});
 
 	});
