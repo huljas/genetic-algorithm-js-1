@@ -38,8 +38,19 @@ kitty.callMe();
 
 h2. Exercise
 
-"javascript String object":http://www.w3schools.com/jsref/jsref_obj_string.asp
-"javascript Math object":http://www.w3schools.com/jsref/jsref_obj_math.asp
+As a first step checkout this project from github
+
+bc. git clone https://github.com/huljas/genetic-algorithm-js-1
+
+Then open the tests page <code>tests/test.html</code> to run the tests, you should see lot of failures at this point. 
+
+Check also the ui in <code>index.html</code>, you will get to this once the tests pass.
+
+For js reference you can use for example w3schools:
+
+"String object":http://www.w3schools.com/jsref/jsref_obj_string.asp
+"Math object":http://www.w3schools.com/jsref/jsref_obj_math.asp
+"Array object":http://www.w3schools.com/jsref/jsref_obj_array.asp
 
 h2. Part 1
 
@@ -89,13 +100,36 @@ bc. nextGen: 'altaa' , 'beoha
 
 h2. Part 3
 
-Implement the genetic algorithm in the Population object in genetic/populations.js. The algorithm tries to find the
-correct string starting with a pool of randomly generated strings. The population experiences generations which consists of:
+Implement Population object in genetic/population.js.
 
-* Sorting the genes by cost score
-* Killing certain number of weakest members
-* Mating certain number of strongest members to fill the pool
-* Mutating members in random
+Constructor takes the goal string and population size and generates a pool of randomly generated Genes
+
+bc. var population = new genetic.Population("Hello World!", 10);
+
+The sortGenes orders the genes in the pool based on their cost (distance from goal)
+
+bc. population.sortGenes();
+
+The tryMutate mutates each gene in the pool with 50% probability
+
+bc. population.tryMutate();
+
+The eliminateLastTwo removes the two poorest genes from the pool
+
+bc. population.eliminateLastTwo();
+
+The mateFirstTwo mates the two best genes and pushes their children at the end of the pool
+
+bc. population.mateFirstTwo();
+
+h2. Part 4
+
+Implement the genetic algorithm in Population objects generation function:
+
+* Mutate genes in the pool
+* Sort genes
+* Kill poorest
+* Mate best
 
 bc. var population = new genetic.Population("Hello world!", 10);
 var result = population.generation();

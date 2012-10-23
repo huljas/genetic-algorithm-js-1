@@ -1,30 +1,31 @@
-var genetic = genetic || {};
+/*
 
-genetic.Gene = function(value) {
-    this.value = value;
-};
+Implement Gene object in genetic/gene.js
 
-genetic.Gene.prototype = {
-    // Returns the cost of this gene as a distance from the goal
-    cost : function(goal) {
-        return genetic.Utils.distance(this.value, goal);
-    },
-    
-    // Randomly mutates single character
-    mutate: function() {
-        var i = Math.floor(Math.random() * this.value.length);
-        var upOrDown = Math.random() <= 0.5 ? -1 : 1;
-        var newChar = String.fromCharCode(this.value.charCodeAt(i) + upOrDown);
-        this.value = this.value.substr(0, i) + newChar + this.value.substr(i + 1);
-    },
+var alpha = new genetic.Gene("alpha");
+var betaa = new genetic.Gene("betaa");
 
-    // Combines the first half and second half of given gene with this to get two new genes
-    mate: function(gene) {
-        var pivot = Math.round(this.value.length / 2) - 1;
 
-        var child1 = this.value.substr(0, pivot) + gene.value.substr(pivot);
-        var child2 = gene.value.substr(0, pivot) + this.value.substr(pivot);
+cost – calculates the cost of this gene from given value
 
-        return [new genetic.Gene(child1), new genetic.Gene(child2)];
-    }        
-};
+console.log("cost: " + alpha.cost("alphc"));
+
+cost: 4
+
+
+mutate – randomly modifies a single character in this genes value
+
+alpha.mutate();
+console.log("mutate: " + alpha.value);
+
+mutate: aloha
+
+
+mate – combine gene with given gene to produce two new genes
+
+var nextGen = alpha.mate(betaa);
+console.log("nextGen: '" + nextGen[0].value + "' , '" + nextGen[1].value);
+
+nextGen: 'altaa' , 'beoha
+
+*/
