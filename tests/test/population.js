@@ -9,7 +9,7 @@ describe('Population', function() {
 
 		it('should be an instance of Population', function() {
 			var population = new genetic.Population("Hello World!", 10);
-			expect(population).to.be(Population);
+			expect(population).to.be.a(genetic.Population);
 		});
 
 		it('should have a population amount of the value in arguments', function() {
@@ -31,7 +31,7 @@ describe('Population', function() {
 
 	describe('#tryMutate', function() {
 
-		it('should be able to tryMuatate', function() {
+		it('should be able to tryMutate', function() {
 			var population = new genetic.Population("Hello World!", 10);
 			expect(population.tryMutate).to.be.a('function');
 		});
